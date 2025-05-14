@@ -1,12 +1,12 @@
-// src/components/Header.jsx
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext'; // ⬅️ use context
 
 const Header = () => {
-  const user = JSON.parse(localStorage.getItem('user'));
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem('user');
+    logout();
     navigate('/login');
   };
 
